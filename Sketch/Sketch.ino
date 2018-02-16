@@ -1,7 +1,7 @@
 /*
  * Name: Atomatic watering System
  */
-#define SERIAL_DEBUG
+//#define SERIAL_DEBUG
 
 
 int redPin= 11;               // RGB LED RED Pin
@@ -13,6 +13,8 @@ int wetValue = 350;           // Moisture Sensor calibration for wet value
 int friendlyDryValue = 0;     // Moisture Sensor conversion for dry value
 int friendlyWetValue = 100;   // Moisture Sensor conversion for wet value
 int Pump = 13;                // 5v Water Pump - For testing, pin 13 (onboard LED of the arduino)
+int pump_time = 3000;
+int after_pump_time = 5000;
 
 void setup() {
   Serial.begin(9600);         // Open the serial with 9600 baud
@@ -47,11 +49,11 @@ setColor(0, 0, 0); // Green Color
     digitalWrite(Pump, HIGH);
     digitalWrite(relais, LOW);
     setColor(255, 0, 0);            // Red Color
-    delay(3000);                    // Wait 3 seconds
+    delay(pump_time);                    // Wait 3 seconds
     digitalWrite(Pump, LOW);
     digitalWrite(relais, HIGH);
     setColor(0, 255, 0);            // Green Color
-    delay(5000);                    // Wait 5 seconds
+    delay(after_pump_time);                    // Wait 5 seconds
     }
 }
 
