@@ -43,17 +43,25 @@ void loop() {
   Serial.println("%");              // Print to the Serial (for debugging)
   #endif
   
-setColor(0, 0, 0); // Green Color
+  setColor(0, 0, 0); // Shut down the LED
 
   if (friendlyValue < 50) {
+    
     digitalWrite(Pump, HIGH);
     digitalWrite(relais, LOW);
+    
+    for (int i=0; i<3; i=i+1){      // Blink 3 times
     setColor(255, 0, 0);            // Red Color
+    delay(250);
+    setColor(0, 0, 0);              // Shut down the LED
+    delay(250);
+    }
+    
     delay(pump_time);                    // Wait 3 seconds
     digitalWrite(Pump, LOW);
     digitalWrite(relais, HIGH);
-    setColor(0, 255, 0);            // Green Color
-    delay(after_pump_time);                    // Wait 5 seconds
+    setColor(0, 255, 0);                 // Green Color
+    delay(after_pump_time);              // Wait 5 seconds
     }
 }
 
