@@ -14,7 +14,8 @@ const int waterLevelThreshold = 10;    // This is the minimal distance between W
 int emptywaterlevel = 25;     // Measure from the border to the bottom of the water recipient (empty)
 #endif
 
-int redPin= 11;               // RGB LED RED Pin
+int soilPin = A3;             // Soil Moisture Sensor Pin
+int redPin = 11;              // RGB LED RED Pin
 int greenPin = 10;            // RGB LED GREEN Pin
 int bluePin = 9;              // RGB LED BLUE Pin
 int relais = 7;               // Relais Pin - on boot = OFF
@@ -48,7 +49,7 @@ void loop() {
   long waterLevel;
   waterLevel = WaterLevel();
   #endif
-  int rawValue = analogRead(A3);    // Read the moisture sensor value
+  int rawValue = analogRead(soilPin);    // Read the moisture sensor value
   
   #ifdef SERIAL_DEBUG
   Serial.print("Raw: ");            // Print to the Serial (for debugging)
